@@ -3,16 +3,16 @@ import frappe
 from . import __version__ as app_version
 
 app_name = "frappe_lms"
-app_title = "Learning"
-app_publisher = "Frappe"
+app_title = "GARP LMS"
+app_publisher = "Aiconec GARP"
 app_description = "Open Source Learning Management System built with Frappe Framework"
 app_icon_url = "/assets/lms/images/lms-logo.png"
 app_icon_title = "Learning"
 app_icon_route = "/lms"
 app_color = "grey"
-app_email = "jannat@frappe.io"
+app_email = "engineering@aiconec.com"
 app_license = "AGPL"
-required_apps = ["frappe/payments"]
+required_apps = []
 
 
 def get_lms_path():
