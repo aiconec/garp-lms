@@ -534,7 +534,7 @@ msgstr "Apakah Anda yakin ingin mendaftar?"
 
 #: frontend/src/components/Sidebar/UserDropdown.vue:197
 msgid "Are you sure you want to login to your Frappe Cloud dashboard?"
-msgstr "Apakah Anda yakin ingin masuk ke dasbor Frappe Cloud Anda?"
+msgstr "Apakah Anda yakin ingin masuk ke dasbor GARP Cloud Anda?"
 
 #: frontend/src/components/Quiz.vue:387
 msgid "Are you sure you want to submit the quiz?"
@@ -997,7 +997,7 @@ msgstr "Tubuh"
 
 #: frontend/src/components/Sidebar/AppSidebar.vue:187
 msgid "Book a free onboarding session with the Frappe team"
-msgstr "Pesan sesi orientasi gratis dengan tim Frappe"
+msgstr "Pesan sesi orientasi gratis dengan tim GARP"
 
 #. Option for the 'Collaboration Preference' (Select) field in DocType 'User'
 #: lms/fixtures/custom_field.json
@@ -3116,7 +3116,7 @@ msgstr "Pakaian Resmi"
 #. Label of a Desktop Icon
 #: lms/desktop_icon/frappe_learning.json
 msgid "Frappe Learning"
-msgstr "Pembelajaran Frappe"
+msgstr "GARP LMS"
 
 #: lms/lms/widgets/CourseCard.html:114
 msgid "Free"
@@ -3619,7 +3619,7 @@ msgstr "Memasang"
 #: frontend/src/components/InstallPrompt.vue:4
 #: frontend/src/components/InstallPrompt.vue:32
 msgid "Install Frappe Learning"
-msgstr "Instal Pembelajaran Frappe"
+msgstr "Instal GARP LMS"
 
 #. Label of the institution_name (Data) field in DocType 'Education Detail'
 #: lms/lms/doctype/education_detail/education_detail.json
@@ -4328,7 +4328,7 @@ msgstr "Masuk"
 
 #: frontend/src/components/Sidebar/UserDropdown.vue:196
 msgid "Login to Frappe Cloud?"
-msgstr "Masuk ke Frappe Cloud?"
+msgstr "Masuk ke GARP Cloud?"
 
 #: frontend/src/pages/JobDetail.vue:74
 msgid "Login to apply"
@@ -5837,7 +5837,7 @@ msgstr "Kode Pos"
 
 #: frontend/src/components/Sidebar/AppSidebar.vue:205
 msgid "Powered by Frappe Learning"
-msgstr "Didukung oleh Pembelajaran Frappe"
+msgstr "Didukung oleh GARP LMS"
 
 #. Name of a DocType
 #: lms/lms/doctype/preferred_function/preferred_function.json
@@ -7989,7 +7989,7 @@ msgstr "Apa yang paling menggambarkan peran Anda?"
 
 #: frontend/src/pages/PersonaForm.vue:21
 msgid "What is your use case for Frappe Learning?"
-msgstr "Apa kasus penggunaan Anda untuk Frappe Learning?"
+msgstr "Apa kasus penggunaan Anda untuk GARP LMS?"
 
 #: lms/templates/courses_under_review.html:15
 msgid "When a course gets submitted for review, it will be listed here."
