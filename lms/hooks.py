@@ -274,7 +274,7 @@ get_site_info = "lms.activation.get_site_info"
 add_to_apps_screen = [
 	{
 		"name": "lms",
-		"logo": "/assets/lms/frontend/learning.svg",
+		"logo": "/assets/lms/images/garp-lms-icon.svg",
 		"title": "Learning",
 		"route": f"/{get_lms_path()}",
 		"has_permission": "lms.lms.api.check_app_permission",
