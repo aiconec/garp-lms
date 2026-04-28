@@ -23,7 +23,7 @@
  "icon": "education",
  "idx": 0,
  "is_hidden": 0,
- "label": "Learning",
+ "label": "GARP LMS",
  "links": [
   {
    "hidden": 0,
@@ -153,7 +153,7 @@
  "modified": "2026-02-23 12:27:25.010341",
  "modified_by": "Administrator",
  "module": "LMS",
- "name": "Learning",
+ "name": "GARP LMS",
  "number_cards": [],
  "owner": "Administrator",
  "parent_page": "",
@@ -217,6 +217,6 @@
    "type": "DocType"
   }
  ],
- "title": "Learning",
+ "title": "GARP LMS",
  "type": "Workspace"
 }
