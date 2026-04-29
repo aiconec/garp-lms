@@ -36,7 +36,7 @@
 							>
 								{{ branding.data?.app_name }}
 							</span>
-							<span v-else> GARP LMS </span>
+							<span v-else> LMS </span>
 						</div>
 						<div
 							v-if="userResource.data"
@@ -246,7 +246,7 @@ const clearDemoDataConfirmation = () => {
 	$dialog({
 		title: __('Confirm clearing demo data?'),
 		message: __(
-			'Are you sure you want to clear the demo data? This would delete the course "A guide to GARP LMS" along with all its associated data. This action cannot be undone.'
+			'Are you sure you want to clear the demo data? This would delete the course "A guide to LMS" along with all its associated data. This action cannot be undone.'
 		),
 		actions: [
 			{

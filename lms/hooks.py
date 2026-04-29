@@ -3,11 +3,11 @@ import frappe
 from . import __version__ as app_version
 
 app_name = "frappe_lms"
-app_title = "GARP LMS"
+app_title = "LMS"
 app_publisher = "Aiconec GARP"
 app_description = "Open Source Learning Management System built with GARP Framework"
 app_icon_url = "/assets/lms/images/lms-logo.png"
-app_icon_title = "GARP LMS"
+app_icon_title = "LMS"
 app_icon_route = "/lms"
 app_color = "grey"
 app_email = "engineering@aiconec.com"
@@ -275,7 +275,7 @@ add_to_apps_screen = [
 	{
 		"name": "lms",
 		"logo": "/assets/lms/images/garp-lms-icon.svg",
-		"title": "GARP LMS",
+		"title": "LMS",
 		"route": f"/{get_lms_path()}",
 		"has_permission": "lms.lms.api.check_app_permission",
 	}
