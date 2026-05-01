@@ -3,7 +3,7 @@ import frappe
 from . import __version__ as app_version
 
 app_name = "frappe_lms"
-app_title = "LMS"
+app_title = "GARP LMS"
 app_publisher = "Aiconec GARP"
 app_description = "Open Source Learning Management System built with GARP Framework"
 app_icon_url = "/assets/lms/images/lms-logo.png"
