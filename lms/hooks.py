@@ -12,8 +12,6 @@ app_icon_route = "/lms"
 app_color = "grey"
 app_email = "engineering@aiconec.com"
 app_license = "AGPL"
-# AGPL/GPL source offer: the corresponding source of THIS modified version.
-source_link = "https://github.com/aiconec/garp-lms"
 required_apps = []
 
 
