@@ -5,13 +5,16 @@ from . import __version__ as app_version
 app_name = "frappe_lms"
 app_title = "GARP LMS"
 app_publisher = "Aiconec GARP"
-app_description = "Open Source Learning Management System built with GARP Framework"
+app_description = "GARP LMS — courses, batches and certification"
 app_icon_url = "/assets/lms/images/lms-logo.png"
 app_icon_title = "LMS"
 app_icon_route = "/lms"
 app_color = "grey"
 app_email = "engineering@aiconec.com"
 app_license = "AGPL"
+# AGPL-3.0 section 13: this app is a modified version served over a network,
+# so its users are owed the corresponding source of THIS version.
+source_link = "https://github.com/aiconec/garp-lms"
 required_apps = []
 
 
