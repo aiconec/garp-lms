@@ -203,12 +203,8 @@ const userDropdownOptions = computed(() => {
 							],
 						})
 					},
-					condition: () => {
-						return (
-							userResource.data?.is_system_manager &&
-							userResource.data?.is_fc_site
-						)
-					},
+					// GARP is not hosted on Frappe Cloud: never offer to log in there, even if a site's config says otherwise.
+					condition: () => false,
 				},
 				{
 					icon: LogOut,
