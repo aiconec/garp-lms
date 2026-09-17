@@ -1503,15 +1503,11 @@ def save_evaluator_role(user: str, value: int):
 @frappe.whitelist()
 def capture_user_persona(responses: str):
 	frappe.only_for("System Manager")
-	data = frappe.parse_json(responses)
-	data = json.dumps(data)
-	response = frappe.integrations.utils.make_post_request(
-		"https://school.frappe.io/api/method/capture-persona",
-		data={"response": data},
-	)
-	if response.get("message").get("name"):
-		frappe.db.set_single_value("LMS Settings", "persona_captured", True)
-	return response
+	# Validate the payload shape, then keep it on this site. It is deliberately
+	# not forwarded to the upstream vendor, as the stock app does.
+	frappe.parse_json(responses)
+	frappe.db.set_single_value("LMS Settings", "persona_captured", True)
+	return {"message": {"name": "local"}}
 
 
 @frappe.whitelist()
