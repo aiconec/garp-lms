@@ -12,6 +12,7 @@ export default defineConfig(async ({ mode }) => {
 			__VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false',
 		},
 		plugins: [
+			garpVendorPlaceholders(),
 			frappeui({
 				frappeProxy: true,
 				lucideIcons: true,
@@ -83,4 +84,22 @@ async function importFrappeUIPlugin(isDev) {
 	// Fall back to npm package if local import fails
 	const module = await import('frappe-ui/vite')
 	return module.default
+}
+
+// frappe-ui's calendar event form (used by the evaluation schedule) ships the
+// vendor's office address as its Venue placeholder. The library is a dependency,
+// not our source, so the string is swapped while the SFC is compiled. `pre` puts
+// this ahead of the Vue plugin, which is what makes the template see it.
+function garpVendorPlaceholders() {
+	const replacements = [['Frappe, Neelkanth Business Park', 'Meeting room or address']]
+	return {
+		name: 'garp-vendor-placeholders',
+		enforce: 'pre',
+		transform(code, id) {
+			if (!id.includes('frappe-ui')) return null
+			let out = code
+			for (const [from, to] of replacements) out = out.split(from).join(to)
+			return out === code ? null : { code: out, map: null }
+		},
+	}
 }
