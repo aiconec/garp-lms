@@ -22,7 +22,7 @@ frappe.ui.form.on("LMS Settings", {
 					Please install the
 					Payments app
 					 to enable payment gateway. Refer to the
-					 <a target="_blank" style="text-decoration: underline; color: var(--alert-text-warning); background: var(--alert-bg-warning);" href="https://garp.aiconec.com/docs/modules/lms">Documentation</a>
+					 <a target="_blank" style="text-decoration: underline; color: var(--alert-text-warning); background: var(--alert-bg-warning);" href="https://bizconnect.id/docs/modules/lms">Documentation</a>
 					 for more information.
 				</div>
 			`);

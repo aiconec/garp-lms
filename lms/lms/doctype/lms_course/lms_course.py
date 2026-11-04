@@ -62,7 +62,7 @@ class LMSCourse(Document):
 		if self.paid_course:
 			installed_apps = frappe.get_installed_apps()
 			if "payments" not in installed_apps:
-				documentation_link = "https://garp.aiconec.com/docs/modules/lms"
+				documentation_link = "https://bizconnect.id/docs/modules/lms"
 				frappe.throw(
 					_(
 						"Please install the Payments App to create a paid course. Refer to the documentation for more details. {0}"
