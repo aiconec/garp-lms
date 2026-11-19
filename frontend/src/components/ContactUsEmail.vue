@@ -39,19 +39,15 @@
 <script setup lang="ts">
 import { Button, call, Dialog, FormControl, TextEditor, toast } from 'frappe-ui'
 import { ref } from 'vue'
-import { useSettings } from '@/stores/settings'
 
 const show = defineModel<boolean>({ required: true, default: false })
 const subject = ref('')
 const message = ref('')
-const settingsStore = useSettings()
 
 const sendMail = (close: Function) => {
-	call('frappe.core.doctype.communication.email.make', {
-		recipients: settingsStore.settings?.data?.contact_us_email,
+	call('lms.lms.api.send_contact_us_email', {
 		subject: subject.value,
 		content: message.value,
-		send_email: true,
 	})
 		.then(() => {
 			toast.success(__('Email sent successfully'))
