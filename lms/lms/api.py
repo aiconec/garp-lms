@@ -26,6 +26,7 @@ from frappe.utils import (
 	getdate,
 	now,
 )
+from frappe.rate_limiter import rate_limit
 from frappe.utils.response import Response
 from pypika import functions as fn
 
@@ -2398,3 +2399,91 @@ def export_course_as_zip(course_name: str):
 def import_course_from_zip(zip_file_path: str):
 	frappe.only_for(["Moderator", "Course Creator"])
 	return import_course_zip(zip_file_path)
+
+
+# ── Email from the LMS UI ─────────────────────────────────────────────────────
+# frappe.core.doctype.communication.email.make is refused to non-System Users
+# (GHSA-vwqr-4mjv-ffrm), and LMS learners are Website Users. These endpoints
+# decide every recipient on the server, after LMS's own access checks, and send
+# through _make. Ported, simplified, from upstream frappe/lms.
+
+
+def _require_strings(*values):
+	for value in values:
+		if not isinstance(value, str):
+			frappe.throw(_("Invalid arguments"))
+
+
+@frappe.whitelist(methods=["POST"])
+@rate_limit(limit=10, seconds=60 * 60)
+def send_contact_us_email(subject: str, content: str):
+	"""Email the contact address configured in LMS Settings, and nobody else."""
+	from frappe.core.doctype.communication.email import _make
+
+	_require_strings(subject, content)
+	if frappe.session.user == "Guest":
+		frappe.throw(_("Please log in to contact us."), frappe.PermissionError)
+	if not subject.strip() or not frappe.utils.strip_html_tags(content).strip():
+		frappe.throw(_("Please add a subject and a message."))
+
+	recipient = frappe.db.get_single_value("LMS Settings", "contact_us_email")
+	if not recipient:
+		frappe.throw(_("This site has no contact address. Ask a moderator to set one in LMS Settings."))
+
+	return _make(
+		recipients=recipient,
+		subject=subject.strip(),
+		content=content,
+		send_email=1,
+		add_signature=False,
+	)
+
+
+@frappe.whitelist(methods=["POST"])
+@rate_limit(limit=60, seconds=60 * 60)
+def send_job_application_email(application: str, subject: str, message: str):
+	"""Email an applicant, as the job's poster or a moderator. The address is looked
+	up here, and the mail goes to nobody else."""
+	from frappe.core.doctype.communication.email import _make
+
+	_require_strings(application, subject, message)
+	row = frappe.db.get_value("LMS Job Application", application, ["job", "user"], as_dict=True)
+	poster = row and frappe.db.get_value("Job Opportunity", row.job, "owner") == frappe.session.user
+	if not row or not (poster or has_moderator_role()):
+		frappe.throw(_("Only the job's poster can email an applicant."), frappe.PermissionError)
+	frappe.has_permission("LMS Job Application", "email", doc=application, throw=True)
+
+	return _make(
+		doctype="LMS Job Application",
+		name=application,
+		recipients=row.user,
+		subject=subject,
+		content=message,
+		send_email=1,
+		now=True,
+		add_signature=False,
+	)
+
+
+@frappe.whitelist(methods=["POST"])
+@rate_limit(limit=30, seconds=60 * 60)
+def send_batch_announcement(batch: str, subject: str, content: str, reply_to: str):
+	"""BCC every student of the batch; their addresses are looked up here."""
+	from frappe.core.doctype.communication.email import _make
+
+	_require_strings(batch, subject, content, reply_to)
+	frappe.has_permission("LMS Batch", "email", doc=batch, throw=True)
+	members = frappe.get_all("LMS Batch Enrollment", {"batch": batch}, pluck="member")
+	if not members:
+		frappe.throw(_("No students in this batch"))
+
+	return _make(
+		doctype="LMS Batch",
+		name=batch,
+		recipients=reply_to,
+		bcc=", ".join(members),
+		subject=subject,
+		content=content,
+		send_email=1,
+		add_signature=False,
+	)

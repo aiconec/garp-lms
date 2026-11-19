@@ -136,11 +136,6 @@
 						:placeholder="__('Enter email subject')"
 						required
 					/>
-					<FormControl
-						v-model="emailForm.replyTo"
-						:label="__('Reply To')"
-						:placeholder="__('Enter reply to email')"
-					/>
 					<div>
 						<div class="text-sm text-ink-gray-5 mb-1">
 							{{ __('Message') }}
@@ -252,17 +247,12 @@ watch(search, () => {
 })
 
 const emailResource = createResource({
-	url: 'frappe.core.doctype.communication.email.make',
+	url: 'lms.lms.api.send_job_application_email',
 	makeParams(values) {
 		return {
-			recipients: selectedApplicant.value.email,
-			cc: emailForm.replyTo,
+			application: selectedApplicant.value.name,
 			subject: emailForm.subject,
-			content: emailForm.message,
-			doctype: 'LMS Job Application',
-			name: selectedApplicant.value.name,
-			send_email: 1,
-			now: true,
+			message: emailForm.message,
 		}
 	},
 })
