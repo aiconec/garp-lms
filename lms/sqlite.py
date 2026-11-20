@@ -124,9 +124,11 @@ class LearningSearch(SQLiteSearch):
 		"Course Instructor": INSTRUCTOR_FIELDS,
 	}
 
-	def build_index(self):
+	# Pass everything through: since 16.60 the framework's scheduled rebuild calls
+	# build_index(is_continuation=...), which a bare signature turned into a TypeError.
+	def build_index(self, *args, **kwargs):
 		try:
-			super().build_index()
+			super().build_index(*args, **kwargs)
 		except Exception as e:
 			frappe.throw(e)
 
