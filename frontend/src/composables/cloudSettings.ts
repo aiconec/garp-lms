@@ -4,14 +4,12 @@ import { usersStore } from '@/stores/user'
 export const cloudContext = (): CloudContext | undefined =>
 	usersStore().userResource.data?.cloud_settings
 
-// Frappe enables it only for System Managers on a Frappe Cloud v2 site
-export const hasCloudSettings = (): boolean => cloudContext()?.enabled === true
+// GARP is not hosted on Frappe Cloud: never show its billing/marketplace panels,
+// trial card or banner, even if a site's config says otherwise.
+export const hasCloudSettings = (): boolean => false
 
 // A System Manager on a Frappe Cloud v1 site keeps the old trial banner and login
-export const isV1CloudAdmin = (): boolean => {
-	const user = usersStore().userResource.data
-	return !!user?.is_system_manager && !!user.is_fc_site && !hasCloudSettings()
-}
+export const isV1CloudAdmin = (): boolean => false
 
 // LMS's __ returns a { format } object for a placeholder message given no
 // values, so always pass an array to get a string back.

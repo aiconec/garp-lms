@@ -18,8 +18,8 @@ import frappe
 from frappe.utils.telemetry import capture
 from frappe.utils.telemetry.pulse.client import is_enabled as pulse_enabled
 
-DEMO_COURSE_TITLE = "A guide to Frappe Learning"
-DEMO_QUIZ_TITLE = "Do you know Frappe Learning?"
+DEMO_COURSE_TITLE = "A guide to LMS"
+DEMO_QUIZ_TITLE = "Do you know LMS?"
 
 
 def tracking() -> bool:

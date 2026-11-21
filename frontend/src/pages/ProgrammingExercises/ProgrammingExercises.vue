@@ -20,7 +20,7 @@
 			<EmptyStateActions
 				list="programming_exercises"
 				:create-label="__('New Programming Exercise')"
-				docs="https://docs.frappe.io/learning/assessments/programming-exercise"
+				docs="https://bizconnect.id/docs/modules/lms"
 				@create="openExerciseForm('new')"
 			/>
 		</template>

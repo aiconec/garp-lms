@@ -17,7 +17,7 @@
 			<EmptyStateActions
 				list="certified_participants"
 				:create-label="__('New Course')"
-				docs="https://docs.frappe.io/learning/issue-a-certificate"
+				docs="https://bizconnect.id/docs/modules/lms"
 				@create="newCourseFromEmptyState"
 			/>
 		</template>

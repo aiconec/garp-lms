@@ -125,8 +125,8 @@ function steps(current: 'chapter' | 'lesson'): Step[] {
 }
 
 const DOCS = {
-	chapter: 'https://docs.frappe.io/learning/add-a-chapter',
-	lesson: 'https://docs.frappe.io/learning/course-creation/adding-a-lesson',
+	chapter: 'https://bizconnect.id/docs/modules/lms',
+	lesson: 'https://bizconnect.id/docs/modules/lms',
 }
 
 const state = computed(() => {

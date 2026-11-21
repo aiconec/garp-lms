@@ -69,7 +69,7 @@
 				list="batches"
 				:tab="currentTab"
 				:create-label="__('New Batch')"
-				docs="https://docs.frappe.io/learning/create-a-batch"
+				docs="https://bizconnect.id/docs/modules/lms"
 				@create="newBatchFromEmptyState"
 			/>
 		</template>

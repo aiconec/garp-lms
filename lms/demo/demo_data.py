@@ -57,7 +57,7 @@ def _create_demo_data():
 
 
 def create_course():
-	title = "A guide to Frappe Learning"
+	title = "A guide to LMS"
 	filters = {"title": title}
 	if frappe.db.exists("LMS Course", filters):
 		return frappe.get_doc("LMS Course", filters)
@@ -68,18 +68,18 @@ def create_course():
 		{
 			"title": title,
 			"category": "Business",
-			"tags": "Frappe, Demo",
+			"tags": "GARP, Demo",
 			"published": 1,
 			"published_on": frappe.utils.now(),
 			"video_link": "VIt_bsbBjLI",
 			"instructors": [{"instructor": instructor.name}],
-			"short_introduction": "Learn the basics of Frappe Learning and how to get started with your very first course.",
+			"short_introduction": "Learn the basics of LMS and how to get started with your very first course.",
 			"image": "/assets/lms/images/course_card.jpeg",
 		}
 	)
 
 	course.description = """
-		This course will cover the fundamentals of Frappe Learning, including how to create and manage courses, enroll students, and track progress. You will learn about the following key features of the app:
+		This course will cover the fundamentals of LMS, including how to create and manage courses, enroll students, and track progress. You will learn about the following key features of the app:
 		<br>
 		<h3>Key Features</h3>
 		<br>
@@ -95,7 +95,7 @@ def create_course():
 		4. Getting Certified: Once a learner completes the course or batch, you can grant them a certificate. The app provides an inbuilt certificate template that you can use as-is or customize by creating your own template.
 		<br>
 		<br>
-		To know more about the app and its features, <a href="https://docs.frappe.io/learning">check out the documentation</a>.
+		To know more about the app and its features, <a href="https://bizconnect.id/docs/modules/lms">check out the documentation</a>.
  """
 	course.save()
 	return course
@@ -184,7 +184,7 @@ def create_intro_lesson_1(course):
 
 
 def create_intro_lesson_2(course):
-	title = "What is Frappe Learning?"
+	title = "What is LMS?"
 	chapter = get_chapter(course, "Introduction")
 	content = """
 		{"time":1772449622100,"blocks":[{"id":"vYTdcXYVgI","type":"embed","data":{"service":"youtube","source":"https://www.youtube.com/watch?v=gFXVCWmVQvQ","embed":"gFXVCWmVQvQ","caption":""}}],"version":"2.29.0"}
@@ -225,7 +225,7 @@ def create_assessment_lesson_1(course):
 
 
 def create_quiz():
-	title = "Do you know Frappe Learning?"
+	title = "Do you know LMS?"
 	filters = {"title": title}
 	if frappe.db.exists("LMS Quiz", filters):
 		return frappe.get_doc("LMS Quiz", filters)
@@ -233,7 +233,7 @@ def create_quiz():
 	questions = []
 	questions.append(
 		create_quiz_questions(
-			"What is Frappe Learning primarily used for?",
+			"What is LMS primarily used for?",
 			"Project Management",
 			False,
 			"Learning Management",
@@ -242,7 +242,7 @@ def create_quiz():
 	)
 	questions.append(
 		create_quiz_questions(
-			"Which of the following can be added to a course in Frappe Learning?",
+			"Which of the following can be added to a course in LMS?",
 			"Lessons",
 			True,
 			"Issues",
@@ -251,11 +251,11 @@ def create_quiz():
 	)
 	questions.append(
 		create_quiz_questions(
-			"What is the top-level structure in Frappe Learning?", "Chapter", False, "Course", True
+			"What is the top-level structure in LMS?", "Chapter", False, "Course", True
 		)
 	)
 	questions.append(
-		create_quiz_questions("Can you create quizzes in Frappe Learning?", "Yes", True, "No", False)
+		create_quiz_questions("Can you create quizzes in LMS?", "Yes", True, "No", False)
 	)
 	questions.append(
 		create_quiz_questions(
@@ -263,11 +263,11 @@ def create_quiz():
 		)
 	)
 	questions.append(
-		create_quiz_questions("Can you track learner progress in Frappe Learning?", "Yes", True, "No", False)
+		create_quiz_questions("Can you track learner progress in LMS?", "Yes", True, "No", False)
 	)
 	questions.append(
 		create_quiz_questions(
-			"What is the purpose of a batch in Frappe Learning?",
+			"What is the purpose of a batch in LMS?",
 			"To group learners",
 			True,
 			"To store website themes",
@@ -276,7 +276,7 @@ def create_quiz():
 	)
 	questions.append(
 		create_quiz_questions(
-			"How can you create custom certificates in Frappe Learning?",
+			"How can you create custom certificates in LMS?",
 			"Using Server Scripts",
 			False,
 			"Using Print Formats",
@@ -324,7 +324,7 @@ def create_reviews(course, student):
 	review = frappe.new_doc("LMS Course Review")
 	review.course = course.name
 	review.rating = 0.8
-	review.review = "This is a great course to get started with Frappe Learning. The content is well-structured and easy to follow."
+	review.review = "This is a great course to get started with LMS. The content is well-structured and easy to follow."
 	review.save()
 	frappe.session.user = "Administrator"
 	update_course_statistics()
@@ -367,21 +367,21 @@ def get_video_content():
 				"id": "bj6mK0D36z",
 				"type": "paragraph",
 				"data": {
-					"text": "Frappe Learning allows you to embed videos in lessons using popular video hosting platforms."
+					"text": "LMS allows you to embed videos in lessons using popular video hosting platforms."
 				},
 			},
 			{
 				"id": "1ooWPn5Zmq",
 				"type": "paragraph",
 				"data": {
-					"text": "You don't need to upload videos directly into Frappe Learning - simply copy the video URL from your preferred provider and paste it into the Lesson Editor."
+					"text": "You don't need to upload videos directly into LMS - simply copy the video URL from your preferred provider and paste it into the Lesson Editor."
 				},
 			},
 			{
 				"id": "tCJD0yMAGd",
 				"type": "paragraph",
 				"data": {
-					"text": "Frappe Learning automatically detects the video source and embeds it for learners."
+					"text": "LMS automatically detects the video source and embeds it for learners."
 				},
 			},
 			{"id": "KpfuszbA09", "type": "markdown", "data": {"text": ""}},

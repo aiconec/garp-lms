@@ -189,12 +189,12 @@
 							/>
 						</button>
 					</Tooltip>
-					<Tooltip :text="__('Powered by Frappe Learning')">
+					<Tooltip :text="__('Powered by GARP')">
 						<a
-							href="https://frappe.io/learning"
+							href="https://aiconec.com"
 							v-external
 							class="flex"
-							:aria-label="__('Powered by Frappe Learning')"
+							:aria-label="__('Powered by GARP')"
 						>
 							<span
 								class="lucide-zap size-4 text-ink-gray-7 cursor-pointer"
@@ -228,13 +228,13 @@
 			v-model="showHelpModal"
 			v-model:articles="articles"
 			appName="learning"
-			title="Frappe Learning"
+			title="GARP LMS"
 			:logo="LMSLogo"
 			:afterSkip="(step) => capture('onboarding_step_skipped_' + step)"
 			:afterSkipAll="() => capture('onboarding_steps_skipped')"
 			:afterReset="(step) => capture('onboarding_step_reset_' + step)"
 			:afterResetAll="() => capture('onboarding_steps_reset')"
-			docsLink="https://docs.frappe.io/learning"
+			docsLink="https://bizconnect.id/docs/modules/lms"
 		/>
 		<IntermediateStepModal
 			v-model="showIntermediateModal"

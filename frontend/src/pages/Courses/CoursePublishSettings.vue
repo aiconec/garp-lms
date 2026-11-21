@@ -189,7 +189,7 @@
 			<p class="text-p-base text-ink-gray-7">
 				{{
 					__(
-						'Selling a paid course or certificate needs the Payments app. Install it from the Frappe Marketplace, then turn on pricing here.'
+						'Selling a paid course or certificate needs the Payments app. Ask your administrator to install it, then turn on pricing here.'
 					)
 				}}
 			</p>
@@ -267,7 +267,7 @@ function setPaidCertificate(val: boolean) {
 
 function openPaymentsApp() {
 	if (hasCloudSettings()) openSettings('cloud-marketplace')
-	else openExternal('https://frappecloud.com/marketplace/apps/payments')
+	else openExternal('https://bizconnect.id/docs/modules/lms')
 }
 
 const timezoneResource = createResource({

@@ -2044,6 +2044,7 @@ def get_batch_members(batch: str) -> list[str]:
 
 
 @frappe.whitelist(methods=["POST"])
+@rate_limit(limit=30, seconds=60 * 60)
 def send_batch_announcement(batch: str, subject: str, content: str, reply_to: str):
 	"""BCC every student of the batch. Their addresses are looked up here, so the
 	author never holds them."""
@@ -2727,6 +2728,7 @@ def cancel_evaluation(evaluation: dict):
 
 
 @frappe.whitelist(methods=["POST"])
+@rate_limit(limit=10, seconds=60 * 60)
 def send_contact_us_email(subject: str, content: str) -> str:
 	"""Email the address configured in LMS Settings, images and all.
 
@@ -2984,15 +2986,11 @@ def delete_member(user: str):
 @frappe.whitelist(methods=["POST"])
 def capture_user_persona(responses: str):
 	frappe.only_for("System Manager")
-	data = frappe.parse_json(responses)
-	data = json.dumps(data)
-	response = frappe.integrations.utils.make_post_request(
-		"https://school.frappe.io/api/method/capture-persona",
-		data={"response": data},
-	)
-	if response.get("message").get("name"):
-		frappe.db.set_single_value("LMS Settings", "persona_captured", True)
-	return response
+	# Validate the payload shape, then keep it on this site. It is deliberately
+	# not forwarded to the upstream vendor, as the stock app does.
+	frappe.parse_json(responses)
+	frappe.db.set_single_value("LMS Settings", "persona_captured", True)
+	return {"message": {"name": "local"}}
 
 
 @frappe.whitelist()
@@ -3378,7 +3376,7 @@ def get_app_logo_icons() -> list[dict]:
 @frappe.whitelist(allow_guest=True)
 def get_pwa_manifest():
 	"""Web app manifest for installing the LMS as a PWA."""
-	title = frappe.db.get_single_value("Website Settings", "app_name") or "Frappe Learning"
+	title = frappe.db.get_single_value("Website Settings", "app_name") or "LMS"
 	route = get_lms_route()
 
 	# `display` was absent, so it defaulted to "browser" and the installed app
@@ -4501,11 +4499,11 @@ def get_user_certificates(username: str) -> list:
 @frappe.whitelist(methods=["POST"])
 def clear_demo_data():
 	frappe.only_for("Moderator")
-	quiz_title = "Do you know Frappe Learning?"
+	quiz_title = "Do you know LMS?"
 	if frappe.db.exists("LMS Quiz", {"title": quiz_title}):
 		frappe.db.delete("LMS Quiz", {"title": quiz_title})
 
-	demo_course = frappe.get_all("LMS Course", {"title": "A guide to Frappe Learning"}, pluck="name")
+	demo_course = frappe.get_all("LMS Course", {"title": "A guide to LMS"}, pluck="name")
 
 	if len(demo_course):
 		delete_course(demo_course[0])

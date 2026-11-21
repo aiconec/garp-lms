@@ -33,7 +33,7 @@
 					>
 						<LMSLogo class="size-7" />
 						<div class="min-w-0 flex-1 leading-tight">
-							<div class="truncate">{{ __('Learning') }}</div>
+							<div class="truncate">{{ __('LMS') }}</div>
 							<div class="truncate text-sm font-normal text-ink-gray-6">
 								{{ userName || __('Your site') }}
 							</div>

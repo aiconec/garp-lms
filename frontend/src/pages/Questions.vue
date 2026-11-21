@@ -20,7 +20,7 @@
 			<EmptyStateActions
 				list="questions"
 				:create-label="__('New question')"
-				docs="https://docs.frappe.io/learning/quizzes"
+				docs="https://bizconnect.id/docs/modules/lms"
 				@create="newQuestion"
 			/>
 		</template>

@@ -24,7 +24,7 @@ class TestDemoData(BaseTestUtils):
 
 		self.assertEqual(frappe.db.get_value("User", self.real_user.name, "user_image"), "/files/real.png")
 		self.assertNotIn("Moderator", frappe.get_roles(self.real_user.name))
-		course = frappe.db.get_value("LMS Course", {"title": "A guide to Frappe Learning"})
+		course = frappe.db.get_value("LMS Course", {"title": "A guide to LMS"})
 		instructors = frappe.get_all("Course Instructor", {"parent": course}, pluck="instructor")
 		self.assertEqual(instructors, [DEMO_INSTRUCTOR])
 

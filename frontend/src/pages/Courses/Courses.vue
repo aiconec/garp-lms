@@ -21,7 +21,7 @@
 				list="courses"
 				:tab="currentTab"
 				:create-label="__('New Course')"
-				docs="https://docs.frappe.io/learning/create-a-course"
+				docs="https://bizconnect.id/docs/modules/lms"
 				@create="newCourseFromEmptyState"
 			/>
 		</template>

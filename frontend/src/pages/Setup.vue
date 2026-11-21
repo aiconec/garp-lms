@@ -12,7 +12,7 @@
 				class="flex items-center gap-2 text-base font-medium text-ink-gray-9"
 			>
 				<LMSLogo class="size-6" />
-				{{ __('Frappe Learning') }}
+				{{ __('GARP LMS') }}
 			</div>
 		</template>
 
@@ -80,7 +80,7 @@
 				app-name="lms"
 				class="mx-auto w-full max-w-md"
 				:label="
-					__('Share anonymous usage data to help improve Frappe Learning')
+					__('Share anonymous usage data to help improve LMS')
 				"
 				:error-message="__('Could not save your choice. Please try again.')"
 			/>
@@ -272,5 +272,5 @@ function sendStartIfLost() {
 	)
 }
 
-usePageMeta(() => ({ title: __('Set up Frappe Learning') }))
+usePageMeta(() => ({ title: __('Set up LMS') }))
 </script>

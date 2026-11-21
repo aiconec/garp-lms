@@ -37,12 +37,14 @@
 						<div class="text-p-base-medium text-ink-gray-9">
 							<span
 								v-if="
-									branding.data?.app_name && branding.data?.app_name != 'Frappe'
+									branding.data?.app_name &&
+									branding.data?.app_name != 'Frappe' &&
+									branding.data?.app_name != 'Garp'
 								"
 							>
 								{{ branding.data?.app_name }}
 							</span>
-							<span v-else> Learning </span>
+							<span v-else> LMS </span>
 						</div>
 						<div
 							v-if="userResource.data"
@@ -83,7 +85,6 @@ import LMSLogo from '@/components/Icons/LMSLogo.vue'
 import SettingsModal from '@/components/Settings/Settings.vue'
 import { canOpenSettings } from '@/components/Settings/settings'
 import { pushSettingsHash } from '@/composables/useSettingsHash'
-import { isV1CloudAdmin } from '@/composables/cloudSettings'
 import { safeUrl } from '@/utils/safeUrl'
 import { openExternal } from '@/utils/openExternal'
 
@@ -262,7 +263,8 @@ const userDropdownOptions = computed(() => {
 							],
 						})
 					},
-					condition: isV1CloudAdmin,
+					// GARP is not hosted on Frappe Cloud: never offer to log in there, even if a site's config says otherwise.
+					condition: () => false,
 				},
 				{
 					icon: 'lucide-log-out',
@@ -300,7 +302,7 @@ const clearDemoDataConfirmation = () => {
 	$dialog({
 		title: __('Confirm clearing demo data?'),
 		message: __(
-			'Are you sure you want to clear the demo data? This would delete the course "A guide  to Frappe Learning" along with all its associated data. This action cannot be undone.'
+			'Are you sure you want to clear the demo data? This would delete the course "A guide to LMS" along with all its associated data. This action cannot be undone.'
 		),
 		actions: [
 			{

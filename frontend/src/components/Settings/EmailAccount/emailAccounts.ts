@@ -379,18 +379,7 @@ export const services: EmailService[] = [
 		link: 'https://yandex.com/support/id/authorization/app-passwords.html',
 		custom: false,
 	},
-	{
-		name: FRAPPE_MAIL,
-		icon: LogoFrappeMail,
-		get description() {
-			return __('Send and receive through Frappe Mail')
-		},
-		info: __(
-			`Setting up Frappe Mail requires you to have an API key and API Secret of your email account. Read more`
-		),
-		link: 'https://github.com/frappe/mail',
-		custom: true,
-	},
+	// GARP: Frappe Mail (a vendor service) is not offered as a new provider.
 	{
 		name: CUSTOM_SERVICE,
 		icon: '',
@@ -400,7 +389,7 @@ export const services: EmailService[] = [
 		info: __(
 			`Any IMAP/POP3 and SMTP server your provider gives you the host and port for. Read more`
 		),
-		link: 'https://docs.frappe.io/framework/user/en/setting-up-email',
+		link: 'https://bizconnect.id/docs',
 		custom: true,
 	},
 ]

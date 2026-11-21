@@ -22,7 +22,7 @@
 				:tab="activeTab"
 				:create-label="__('New Job')"
 				:route="{ name: 'JobForm', params: { jobName: 'new' } }"
-				docs="https://docs.frappe.io/learning/job-listing/create-a-job-listing"
+				docs="https://bizconnect.id/docs/modules/lms"
 			/>
 		</template>
 

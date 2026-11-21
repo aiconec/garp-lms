@@ -3,16 +3,16 @@ import frappe
 from . import __version__ as app_version
 
 app_name = "frappe_lms"
-app_title = "Learning"
-app_publisher = "Frappe"
-app_description = "Open Source Learning Management System built with Frappe Framework"
+app_title = "GARP LMS"
+app_publisher = "Aiconec GARP"
+app_description = "GARP LMS — courses, batches and certification"
 app_icon_url = "/assets/lms/images/lms-logo.png"
-app_icon_title = "Learning"
+app_icon_title = "GARP LMS"
 app_icon_route = "/lms"
 app_color = "grey"
-app_email = "jannat@frappe.io"
+app_email = "engineering@aiconec.com"
 app_license = "AGPL"
-required_apps = ["frappe/payments"]
+required_apps = []
 
 
 def get_lms_path():
@@ -232,7 +232,7 @@ scheduler_events = {
 		"lms.lms.doctype.lms_course.lms_course.update_course_statistics",
 		"lms.lms.doctype.lms_certificate_request.lms_certificate_request.mark_eval_as_completed",
 		"lms.lms.doctype.lms_live_class.lms_live_class.update_attendance",
-		"lms.lms.day1_email.send_day1_email",
+		# GARP: lms.lms.day1_email.send_day1_email is a Frappe Cloud vendor email; not scheduled.
 	],
 	"daily": [
 		"lms.job.doctype.job_opportunity.job_opportunity.update_job_openings",
@@ -364,8 +364,8 @@ get_site_info = "lms.activation.get_site_info"
 add_to_apps_screen = [
 	{
 		"name": "lms",
-		"logo": "/assets/lms/frontend/learning.svg",
-		"title": "Learning",
+		"logo": "/assets/lms/images/garp-lms-icon.svg",
+		"title": "GARP LMS",
 		"route": f"/{get_lms_path()}",
 		"has_permission": "lms.lms.api.check_app_permission",
 	}
